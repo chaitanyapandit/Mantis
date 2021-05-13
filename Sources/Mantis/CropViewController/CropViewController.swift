@@ -474,7 +474,7 @@ extension CropViewController {
     }
     
     fileprivate func changeStackViewOrder() {
-        stackView?.removeArrangedSubview(cropStackView)
+        stackView?.addArrangedSubview(cropStackView)
     }
     
     fileprivate func updateLayout() {
