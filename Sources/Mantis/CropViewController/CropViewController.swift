@@ -58,6 +58,7 @@ public class CropViewController: UIViewController {
     public var mode: CropViewControllerMode = .normal
     public var config = Mantis.Config()
     
+    private var shouldAddBottomBar: Bool = false
     private var orientation: UIInterfaceOrientation = .unknown
     private lazy var cropView = CropView(image: image, viewModel: CropViewModel())
     private var cropToolbar: CropToolbarProtocol
@@ -75,9 +76,10 @@ public class CropViewController: UIViewController {
     init(image: UIImage,
          config: Mantis.Config = Mantis.Config(),
          mode: CropViewControllerMode = .normal,
+         addBottomBar: Bool,
          cropToolbar: CropToolbarProtocol = CropToolbar(frame: CGRect.zero)) {
         self.image = image
-        
+        self.shouldAddBottomBar = addBottomBar
         self.config = config
         
         switch config.cropShapeType {
@@ -474,7 +476,20 @@ extension CropViewController {
     }
     
     fileprivate func changeStackViewOrder() {
-        stackView?.addArrangedSubview(cropStackView)
+        if shouldAddBottomBar {
+            stackView?.removeArrangedSubview(cropStackView)
+            stackView?.removeArrangedSubview(cropToolbar)
+            
+            if Orientation.isPortrait || Orientation.isLandscapeRight {
+                stackView?.addArrangedSubview(cropStackView)
+                stackView?.addArrangedSubview(cropToolbar)
+            } else if Orientation.isLandscapeLeft {
+                stackView?.addArrangedSubview(cropToolbar)
+                stackView?.addArrangedSubview(cropStackView)
+            }
+        } else {
+            stackView?.addArrangedSubview(cropStackView)
+        }
     }
     
     fileprivate func updateLayout() {

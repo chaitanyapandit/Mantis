@@ -30,19 +30,21 @@ private(set) var bundle: Bundle? = {
 
 public func cropViewController(image: UIImage,
                                config: Mantis.Config = Mantis.Config(),
+                               addBottomBar: Bool,
                                cropToolbar: CropToolbarProtocol = CropToolbar(frame: CGRect.zero)) -> CropViewController {
     return CropViewController(image: image,
                               config: config,
-                              mode: .normal,
+                              mode: .normal, addBottomBar: addBottomBar,
                               cropToolbar: cropToolbar)
 }
 
 public func cropCustomizableViewController(image: UIImage,
                                            config: Mantis.Config = Mantis.Config(),
+                                           addBottomBar: Bool,
                                            cropToolbar: CropToolbarProtocol = CropToolbar(frame: CGRect.zero)) -> CropViewController {
     return CropViewController(image: image,
                               config: config,
-                              mode: .customizable,
+                              mode: .customizable, addBottomBar: addBottomBar,
                               cropToolbar: cropToolbar)
 }
 
