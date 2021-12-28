@@ -10,6 +10,7 @@ import UIKit
 import Mantis
 
 class CustomizedCropToolbarWithoutList: UIView, CropToolbarProtocol {
+    
     var heightForVerticalOrientationConstraint: NSLayoutConstraint?
     var widthForHorizonOrientationConstraint: NSLayoutConstraint?
     var cropToolbarDelegate: CropToolbarDelegate?
@@ -18,6 +19,7 @@ class CustomizedCropToolbarWithoutList: UIView, CropToolbarProtocol {
     private var portraitRatioButton: UIButton?
     private var landscapeRatioButton: UIButton?
     private var cropButton: UIButton?
+    private var testButton: UIButton?
     private var cancelButton: UIButton?
     private var stackView: UIStackView?
     private var config: CropToolbarConfig!
@@ -30,6 +32,7 @@ class CustomizedCropToolbarWithoutList: UIView, CropToolbarProtocol {
         backgroundColor = .darkGray
         
         cropButton = createOptionButton(withTitle: "Crop", andAction: #selector(crop))
+        testButton = createOptionButton(withTitle: "TEST", andAction: #selector(showAddTextOverlay))
         cancelButton = createOptionButton(withTitle: "Cancel", andAction: #selector(cancel))
         portraitRatioButton = createOptionButton(withTitle: "9:16", andAction: #selector(setPortraitRatio))
         landscapeRatioButton = createOptionButton(withTitle: "16:9", andAction: #selector(setLandscapeRatio))
@@ -49,6 +52,7 @@ class CustomizedCropToolbarWithoutList: UIView, CropToolbarProtocol {
         stackView?.addArrangedSubview(cancelButton!)
         stackView?.addArrangedSubview(portraitRatioButton!)
         stackView?.addArrangedSubview(landscapeRatioButton!)
+        stackView?.addArrangedSubview(testButton!)
         stackView?.addArrangedSubview(cropButton!)
     }
     
@@ -79,8 +83,6 @@ class CustomizedCropToolbarWithoutList: UIView, CropToolbarProtocol {
             stackView?.axis = .vertical
         }
     }
-    
-    
             
     @objc private func crop() {
         cropToolbarDelegate?.didSelectCrop()
@@ -96,6 +98,10 @@ class CustomizedCropToolbarWithoutList: UIView, CropToolbarProtocol {
     
     @objc private func setLandscapeRatio() {
         cropToolbarDelegate?.didSelectRatio(ratio: 16 / 9)
+    }
+    
+    @objc private func showAddTextOverlay() {
+        
     }
     
     private func createOptionButton(withTitle title: String?, andAction action: Selector) -> UIButton {
@@ -119,5 +125,9 @@ class CustomizedCropToolbarWithoutList: UIView, CropToolbarProtocol {
         button.contentEdgeInsets = UIEdgeInsets(top: 4, left: 10, bottom: 4, right: 10)
         
         return button
+    }
+    
+    func addTextOverlay() {
+        // make UI for adding text overlay
     }
 }

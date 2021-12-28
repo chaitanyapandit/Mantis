@@ -550,6 +550,10 @@ extension CropViewController: CropToolbarDelegate {
     public func didSelectAlterCropper90Degree() {
         handleAlterCropper90Degree()
     }
+    
+    public func addTextOverlay() {
+        
+    }
 }
 
 // API

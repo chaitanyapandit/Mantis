@@ -36,8 +36,7 @@ class ViewController: UIViewController, CropViewControllerDelegate {
         }
         
         let config = Mantis.Config()
-        let cropViewController = Mantis.cropViewController(image: image,
-                                                           config: config)
+        let cropViewController = Mantis.cropViewController(image: image, config: config, addBottomBar: true)
         cropViewController.modalPresentationStyle = .fullScreen
         cropViewController.delegate = self
         present(cropViewController, animated: true)
@@ -63,7 +62,7 @@ class ViewController: UIViewController, CropViewControllerDelegate {
         config.presetTransformationType = .presetInfo(info: transform)
         
         let cropViewController = Mantis.cropViewController(image: image,
-                                                           config: config)
+                                                           config: config, addBottomBar: false)
         cropViewController.modalPresentationStyle = .fullScreen
         cropViewController.delegate = self
         present(cropViewController, animated: true)
@@ -77,7 +76,7 @@ class ViewController: UIViewController, CropViewControllerDelegate {
         var config = Mantis.Config()
         config.showRotationDial = false
         
-        let cropViewController = Mantis.cropViewController(image: image, config: config)
+        let cropViewController = Mantis.cropViewController(image: image, config: config, addBottomBar: false)
         cropViewController.modalPresentationStyle = .fullScreen
         cropViewController.delegate = self
         present(cropViewController, animated: true)
@@ -90,7 +89,7 @@ class ViewController: UIViewController, CropViewControllerDelegate {
         
         let config = Mantis.Config()
         
-        let cropViewController = Mantis.cropViewController(image: image, config: config)
+        let cropViewController = Mantis.cropViewController(image: image, config: config, addBottomBar: false)
         cropViewController.modalPresentationStyle = .fullScreen
         cropViewController.delegate = self
         cropViewController.config.presetFixedRatioType = .alwaysUsingOnePresetFixedRatio(ratio: 16.0 / 9.0)
@@ -111,14 +110,12 @@ class ViewController: UIViewController, CropViewControllerDelegate {
         
         let cropViewController = Mantis.cropViewController(image: image,
                                                            config: config,
-                                                           cropToolbar: cropToolbar)
+                                                           addBottomBar: true, cropToolbar: cropToolbar)
         cropViewController.modalPresentationStyle = .fullScreen
         cropViewController.delegate = self
         present(cropViewController, animated: true)
         
     }
-    
-    
     
     @IBAction func customizedCropToolbarWithoutListButtonTouched(_ sender: Any) {
         guard let image = image else {
@@ -133,11 +130,11 @@ class ViewController: UIViewController, CropViewControllerDelegate {
         
         let cropViewController = Mantis.cropViewController(image: image,
                                                            config: config,
+                                                           addBottomBar: true,
                                                            cropToolbar: cropToolbar)
         cropViewController.modalPresentationStyle = .fullScreen
         cropViewController.delegate = self
         present(cropViewController, animated: true)
-        
     }
     
     
@@ -150,7 +147,8 @@ class ViewController: UIViewController, CropViewControllerDelegate {
         config.cropToolbarConfig.toolbarButtonOptions = [.clockwiseRotate, .reset, .ratio, .alterCropper90Degree];
         
         let cropViewController = Mantis.cropViewController(image: image,
-                                                           config: config)
+                                                           config: config,
+                                                           addBottomBar: false)
         cropViewController.modalPresentationStyle = .fullScreen
         cropViewController.delegate = self
         present(cropViewController, animated: true)
@@ -206,7 +204,7 @@ class ViewController: UIViewController, CropViewControllerDelegate {
                 var config = Mantis.Config()
                 config.cropShapeType = item.type
                 
-                let cropViewController = Mantis.cropViewController(image: image, config: config)
+                let cropViewController = Mantis.cropViewController(image: image, config: config, addBottomBar: false)
                 cropViewController.modalPresentationStyle = .fullScreen
                 cropViewController.delegate = self
                 self.present(cropViewController, animated: true)
@@ -230,7 +228,7 @@ class ViewController: UIViewController, CropViewControllerDelegate {
         var config = Mantis.Config()
         config.cropVisualEffectType = effect
         let cropViewController = Mantis.cropViewController(image: image,
-                                                           config: config)
+                                                           config: config, addBottomBar: false)
         cropViewController.modalPresentationStyle = .fullScreen
         cropViewController.delegate = self
         present(cropViewController, animated: true)

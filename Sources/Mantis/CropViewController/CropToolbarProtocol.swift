@@ -7,7 +7,7 @@
 
 import UIKit
 
-public protocol CropToolbarDelegate: class {
+public protocol CropToolbarDelegate: AnyObject {
     func didSelectCancel()
     func didSelectCrop()
     func didSelectCounterClockwiseRotate()
@@ -26,6 +26,7 @@ public protocol CropToolbarProtocol: UIView {
     func createToolbarUI(config: CropToolbarConfig)
     func handleFixedRatioSetted(ratio: Double)
     func handleFixedRatioUnSetted()
+    func addTextOverlay()
     
     // MARK: - The following functions have default implementations
     func getRatioListPresentSourceView() -> UIView?
@@ -76,5 +77,5 @@ public extension CropToolbarProtocol {
     
     func handleCropViewDidBecomeUnResettable() {
         
-    }
+    }    
 }

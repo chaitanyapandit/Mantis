@@ -76,5 +76,4 @@ extension EmbeddedCropViewController: CropViewControllerDelegate {
         let croppedImage = Mantis.getCroppedImage(byCropInfo: cropInfo, andImage: original)
         self.resolutionLabel.text = getResolution(image: croppedImage)
     }
-
 }

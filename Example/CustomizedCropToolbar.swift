@@ -10,6 +10,7 @@ import UIKit
 import Mantis
 
 class CustomizedCropToolbar: UIView, CropToolbarProtocol {
+    
     var heightForVerticalOrientationConstraint: NSLayoutConstraint?
     var widthForHorizonOrientationConstraint: NSLayoutConstraint?
     var cropToolbarDelegate: CropToolbarDelegate?
@@ -82,6 +83,10 @@ class CustomizedCropToolbar: UIView, CropToolbarProtocol {
         cropToolbarDelegate?.didSelectSetRatio()
     }
     
+    func addTextOverlay() {
+        
+    }
+
     private func createOptionButton(withTitle title: String?, andAction action: Selector) -> UIButton {
         let buttonColor = UIColor.white
         let buttonFontSize: CGFloat = (UIDevice.current.userInterfaceIdiom == .pad) ?
