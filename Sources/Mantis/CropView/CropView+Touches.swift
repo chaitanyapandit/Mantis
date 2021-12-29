@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 extension CropView {
-    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+    public override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         let p = self.convert(point, to: self)
         
         if let rotationDial = rotationDial, rotationDial.frame.contains(p) {
@@ -29,7 +29,7 @@ extension CropView {
         return nil
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         
         guard touches.count == 1, let touch = touches.first else {
@@ -48,7 +48,7 @@ extension CropView {
         viewModel.prepareForCrop(byTouchPoint: point)
     }
     
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+    public override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesMoved(touches, with: event)
         
         guard touches.count == 1, let touch = touches.first else {
@@ -63,7 +63,7 @@ extension CropView {
         updateCropBoxFrame(with: point)
     }
     
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+    public override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
         
         if viewModel.needCrop() {

@@ -36,7 +36,7 @@ let minimumAspectRatio: CGFloat = 0
 let hotAreaUnit: CGFloat = 32
 let cropViewPadding:CGFloat = 14.0
 
-class CropView: UIView {
+public class CropView: UIView {
     var cropShapeType: CropShapeType = .rect
     var cropVisualEffectType: CropVisualEffectType = .blurDark
     var angleDashboardHeight: CGFloat = 60

@@ -57,10 +57,10 @@ public class CropViewController: UIViewController {
     public weak var delegate: CropViewControllerDelegate?
     public var mode: CropViewControllerMode = .normal
     public var config = Mantis.Config()
-    
+    public lazy var cropView = CropView(image: image, viewModel: CropViewModel())
+
     private var shouldAddBottomBar: Bool = false
     private var orientation: UIInterfaceOrientation = .unknown
-    lazy var cropView = CropView(image: image, viewModel: CropViewModel())
     private var cropToolbar: CropToolbarProtocol
     private var ratioPresenter: RatioPresenter?
     private var ratioSelector: RatioSelector?
