@@ -81,7 +81,7 @@ public class CropViewController: UIViewController {
         self.image = image
         self.shouldAddBottomBar = addBottomBar
         self.config = config
-        
+
         switch config.cropShapeType {
         case .circle, .square:
             self.config.presetFixedRatioType = .alwaysUsingOnePresetFixedRatio(ratio: 1)
@@ -106,6 +106,10 @@ public class CropViewController: UIViewController {
         self.ratioSelector?.didGetRatio = { [weak self] ratio in
             self?.setFixedRatio(ratio)
         }
+    }
+    
+    public func setNewImage(image: UIImage) {
+        self.image = image
     }
     
     fileprivate func createCropToolbar() {
@@ -455,7 +459,7 @@ extension CropViewController {
         
         stackView = UIStackView()
         view.addSubview(stackView!)
-        
+                
         cropStackView?.translatesAutoresizingMaskIntoConstraints = false
         stackView?.translatesAutoresizingMaskIntoConstraints = false
         cropToolbar.translatesAutoresizingMaskIntoConstraints = false
