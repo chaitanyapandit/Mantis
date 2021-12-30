@@ -42,7 +42,7 @@ public class CropView: UIView {
     var angleDashboardHeight: CGFloat = 60
     
     public var imageContainerFrame: CGRect {
-        return imageContainer.frame
+        return gridOverlayView.frame
     }
     
     var image: UIImage {
