@@ -41,6 +41,10 @@ public class CropView: UIView {
     var cropVisualEffectType: CropVisualEffectType = .blurDark
     var angleDashboardHeight: CGFloat = 60
     
+    public var imageContainerFrame: CGRect {
+        return imageContainer.frame
+    }
+    
     var image: UIImage {
         didSet {
             imageContainer.image = image
