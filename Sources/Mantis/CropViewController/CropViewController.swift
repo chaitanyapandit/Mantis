@@ -45,6 +45,11 @@ public enum CropViewControllerMode {
     case customizable    
 }
 
+public enum ToolbarPosition {
+    case top
+    case bottom
+}
+
 public class CropViewController: UIViewController {
     /// When a CropViewController is used in a storyboard,
     /// passing an image to it is needed after the CropViewController is created.
@@ -60,6 +65,7 @@ public class CropViewController: UIViewController {
     public lazy var cropView = CropView(image: image, viewModel: CropViewModel())
 
     private var shouldAddBottomBar: Bool = false
+    private var toolbarPosition = ToolbarPosition.bottom
     private var orientation: UIInterfaceOrientation = .unknown
     private var cropToolbar: CropToolbarProtocol
     private var ratioPresenter: RatioPresenter?
@@ -77,8 +83,10 @@ public class CropViewController: UIViewController {
          config: Mantis.Config = Mantis.Config(),
          mode: CropViewControllerMode = .normal,
          addBottomBar: Bool,
+         toolbarPosition: ToolbarPosition = .bottom,
          cropToolbar: CropToolbarProtocol = CropToolbar(frame: CGRect.zero)) {
         self.image = image
+        self.toolbarPosition = toolbarPosition
         self.shouldAddBottomBar = addBottomBar
         self.config = config
 
@@ -485,8 +493,14 @@ extension CropViewController {
             stackView?.removeArrangedSubview(cropToolbar)
             
             if Orientation.isPortrait || Orientation.isLandscapeRight {
-                stackView?.addArrangedSubview(cropStackView)
-                stackView?.addArrangedSubview(cropToolbar)
+                if self.toolbarPosition == .bottom {
+                    stackView?.addArrangedSubview(cropStackView)
+                    stackView?.addArrangedSubview(cropToolbar)
+                }
+                else {
+                    stackView?.addArrangedSubview(cropToolbar)
+                    stackView?.addArrangedSubview(cropStackView)
+                }
             } else if Orientation.isLandscapeLeft {
                 stackView?.addArrangedSubview(cropToolbar)
                 stackView?.addArrangedSubview(cropStackView)
