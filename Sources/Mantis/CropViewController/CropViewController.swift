@@ -473,10 +473,15 @@ extension CropViewController {
         cropToolbar.translatesAutoresizingMaskIntoConstraints = false
         cropView.translatesAutoresizingMaskIntoConstraints = false
         
-        stackView?.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        stackView?.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        stackView?.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor).isActive = true
-        stackView?.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor).isActive = true
+        stackView?.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        stackView?.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        stackView?.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        stackView?.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+
+//        stackView?.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+//        stackView?.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+//        stackView?.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor).isActive = true
+//        stackView?.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor).isActive = true
     }
     
     fileprivate func setStackViewAxis() {
