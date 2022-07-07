@@ -8,14 +8,14 @@
 
 import UIKit
 
-class CropMaskViewManager {
+public class CropMaskViewManager {
     fileprivate var dimmingView: CropDimmingView!
     fileprivate var visualEffectView: CropVisualEffectView!
     
     var cropShapeType: CropShapeType = .rect
     var cropVisualEffectType: CropVisualEffectType = .blurDark
     
-    init(with superview: UIView,
+    public init(with superview: UIView,
          cropShapeType: CropShapeType = .rect,
          cropVisualEffectType: CropVisualEffectType = .blurDark) {
         
@@ -59,7 +59,7 @@ class CropMaskViewManager {
         }
     }
     
-    func showVisualEffectBackground() {
+    public func showVisualEffectBackground() {
         UIView.animate(withDuration: 0.5) {
             self.dimmingView.alpha = 0
             self.visualEffectView.alpha = 1
